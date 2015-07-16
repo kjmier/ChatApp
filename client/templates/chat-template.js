@@ -1,4 +1,4 @@
-Template.appChat.helpers({
+Template.appStudProfile.helpers({
 		messages: function () {
 
 			return Messages.find({}, {sort: {createdAt: -1}, limit: 10}) 
@@ -6,25 +6,32 @@ Template.appChat.helpers({
 });
 
 
-Template.appChat.events({
+Template.appStudProfile.events({
 	"click .btnDelete": function (event) {
 		Messages.remove(this._id);
 		return false;
 	},
 
-	"keyup .txtText": function (event) {
+	"keyup .txtCourse": function (event) {
 		if(event.keyCode == 13){
 			Messages.insert({
-				name: $(".txtName").val(),
-				text: $(".txtText").val(),
+				Fname: $(".txtFName").val(),
+				Lname: $(".txtLName").val(),
+				Mname: $(".txtMName").val(),
+				Course: $(".txtCourse").val(),
 				createdAt: new Date()
 
 
 			});
 			
-			$(".txtText").val("");
-			$(".txtText").focus();
-
+			$(".txtFName").val("");
+			$(".txtFName").focus();
+			$(".txtLName").val("");
+			$(".txtLName").focus();
+			$(".txtMName").val("");
+			$(".txtMName").focus();
+			$(".txtCourse").val("");
+			$(".txtCourse").focus();
 
 		}
 		return false;
